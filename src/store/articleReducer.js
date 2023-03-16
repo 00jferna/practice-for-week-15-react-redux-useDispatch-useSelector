@@ -1,6 +1,6 @@
-import articles from '../data/data.json';
+import articles from "../data/data.json";
 
-const LOAD_ARTICLES = 'article/loadArticles';
+const LOAD_ARTICLES = "article/loadArticles";
 
 export const loadArticles = () => {
   return {

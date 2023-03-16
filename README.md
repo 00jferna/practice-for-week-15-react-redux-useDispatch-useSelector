@@ -11,7 +11,7 @@ starter repo, then load the repo into [CodeSandbox].
 
 You should also add the Redux DevTools to your browser extensions if you have
 not done so already. To add the extension in Chrome, go
-[here][add-ReduxDevTools]. For other browsers, search in your extension/add-on
+[here][add-reduxdevtools]. For other browsers, search in your extension/add-on
 menu for Redux DevTools and follow the instructions for adding it to your
 browser.
 
@@ -19,7 +19,7 @@ browser.
 
 In order to load the data into the store, go to the `ArticleList` component.
 Import the [`useDispatch`] hook from [`react-redux`][react-redux] and the
-`loadArticles` action creator from __src/store/articleReducer__. Inside the
+`loadArticles` action creator from **src/store/articleReducer**. Inside the
 component, invoke the `useDispatch` hook and assign the result to a variable
 called `dispatch` to make the functionality available. Create a `useEffect`
 function that `dispatch`es the `loadArticles` function. It should only run one
@@ -66,7 +66,7 @@ function--or any function not declared inside the `useEffect`--could potentially
 change. Go ahead and add `dispatch` to the array; your `useEffect` will still
 run only once, i.e., after the first render. Why? Because your dispatch function
 will remain stable and unchanged as long as you don't change the `store` passed
-to the `<Provider>` in your root __index.js__.
+to the `<Provider>` in your root **index.js**.
 
 ## useSelector
 
@@ -84,7 +84,7 @@ look in the browser's console. The log should show the entire store.
 You, however, only need the `entries` key from the `articleReducer`. Notice in
 the console that, in order to key into the article state, you must first key
 into the reducer function. This function was named `articleState` in the
-__store/index.js__ file in the `combineReducers` function. In the `useSelector`
+**store/index.js** file in the `combineReducers` function. In the `useSelector`
 `console.log`, key into the state by adding `articleState`. Now when you check
 the DevTools console, you should see only the `articleReducer` state. Key into
 the `entries` array in the `useSelector`; in the browser, only the `entries`
@@ -94,7 +94,7 @@ array should now show. Finally, inside the `useSelector`, remove the
 If you have been successful, the code should look similar to this:
 
 ```js
-const articles = useSelector(state=>state.articleState.entries);
+const articles = useSelector((state) => state.articleState.entries);
 ```
 
 ## Fill in the information from the `useSelector`
@@ -119,9 +119,13 @@ should change (even though the displayed article does not).
 If you are successful, your code should look similar to this:
 
 ```js
-{articles.map(({ id, title }) => (
-  <li key={id}><NavLink to={`/article/${id}`}>{title}</NavLink></li>
-))}
+{
+  articles.map(({ id, title }) => (
+    <li key={id}>
+      <NavLink to={`/article/${id}`}>{title}</NavLink>
+    </li>
+  ));
+}
 ```
 
 ## What you have learned
@@ -133,8 +137,8 @@ If you are successful, your code should look similar to this:
 2. Use the `useSelector` hook to subscribe to the store and listen for changes
    in state.
 
-[CodeSandbox]: https://codesandbox.io
-[add-ReduxDevTools]: https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en
+[codesandbox]: https://codesandbox.io
+[add-reduxdevtools]: https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en
 [react-redux]: https://react-redux.js.org/introduction/getting-started
-[`useDispatch`]: https://react-redux.js.org/api/hooks#usedispatch
-[`useSelector`]: https://react-redux.js.org/api/hooks#useselector
+[`usedispatch`]: https://react-redux.js.org/api/hooks#usedispatch
+[`useselector`]: https://react-redux.js.org/api/hooks#useselector
